@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -25,6 +25,8 @@
       font-size: 1rem;
       margin-bottom: 2rem;
       color: #555;
+      text-align: center;
+      max-width: 400px;
     }
 
     .code-container {
@@ -53,12 +55,12 @@
   <p id="verification_subtext">Enter the 6-digit OTP sent to your registered email or phone number.</p>
 
   <div class="code-container">
-    <input type="text" maxlength="1" class="code" />
-    <input type="text" maxlength="1" class="code" />
-    <input type="text" maxlength="1" class="code" />
-    <input type="text" maxlength="1" class="code" />
-    <input type="text" maxlength="1" class="code" />
-    <input type="text" maxlength="1" class="code" />
+    <input type="text" maxlength="1" class="code" id="code-1" />
+    <input type="text" maxlength="1" class="code" id="code-2" />
+    <input type="text" maxlength="1" class="code" id="code-3" />
+    <input type="text" maxlength="1" class="code" id="code-4" />
+    <input type="text" maxlength="1" class="code" id="code-5" />
+    <input type="text" maxlength="1" class="code" id="code-6" />
   </div>
 
   <script>
@@ -78,10 +80,8 @@
             inputs[index - 1].focus();
             inputs[index - 1].value = '';
           }
-        } else if (e.key.match(/^[0-9]$/)) {
-          // Allow number only
-        } else if (e.key !== 'Tab') {
-          e.preventDefault(); // Block non-numeric keys except Tab
+        } else if (!e.key.match(/^[0-9]$/) && e.key !== 'Tab') {
+          e.preventDefault(); // Allow only numeric keys and Tab
         }
       });
 
@@ -90,7 +90,7 @@
       });
     });
 
-    // Focus first input on page load
+    // Auto-focus first input on page load
     inputs[0].focus();
   </script>
 </body>
